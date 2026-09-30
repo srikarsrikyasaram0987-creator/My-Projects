@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kyasaram Srikar | Python Developer</title>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --secondary: #eab308;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* BUTTON */
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--bg-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+
+        .sections {
+            padding: 3rem 0;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 0.5rem;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.7rem;
+            font-size: 1.15rem;
+        }
+
+        .skill-card p {
+            color: var(--text-muted);
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .project-content {
+            padding: 1.7rem;
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h4 {
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        /* PROJECT TAGS */
+
+        .tags {
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+
+            font-size: 0.8rem;
+
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+
+            display: inline-block;
+        }
+
+        .project-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* CONTACT */
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 0.8rem;
+
+            background-color: var(--bg-color);
+
+            border: 1px solid #475569;
+
+            color: var(--text-main);
+
+            border-radius: 5px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+
+            padding: 2rem;
+
+            color: var(--text-muted);
+
+            font-size: 0.9rem;
+
+            margin-top: 4rem;
+
+            border-top: 1px solid var(--card-bg);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin: 0 0.5rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>&lt;Python.Dev /&gt;</h1>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <!-- ABOUT -->
+
+        <section id="about" class="hero">
+
+            <h2>
+                Hi, I'm
+                <span>Kyasaram Srikar</span>
+            </h2>
+
+            <p>
+                Python Developer with hands-on experience building
+                real-world applications using Python, Django, SQL,
+                Object-Oriented Programming, and data analysis libraries.
+
+                Developed projects including a Bank Management System,
+                Student Management System, Exploratory Data Analysis
+                projects, and E-Commerce Web Scraping applications.
+
+                Skilled in CRUD operations, database management,
+                automation, data cleaning, visualization, and writing
+                clean and maintainable Python code.
+
+                Passionate about solving practical problems and
+                continuously learning modern Python development
+                technologies.
+            </p>
+
+            <a href="#projects" class="btn">
+                View My Projects
+            </a>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section id="skills" class="sections">
+
+            <h3>My Skills</h3>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+
+                    <h4>Python Development</h4>
+
+                    <p>
+                        Python,
+                        Django,
+                        Object-Oriented Programming (OOP),
+                        SQLite
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h4>Data Analysis</h4>
+
+                    <p>
+                        Pandas,
+                        NumPy,
+                        Matplotlib,
+                        Exploratory Data Analysis (EDA),
+                        Data Cleaning
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h4>Database</h4>
+
+                    <p>
+                        SQL,
+                        SQLite,
+                        MySQL,
+                        Django ORM,
+                        CRUD Operations
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h4>Tools & Automation</h4>
+
+                    <p>
+                        Git,
+                        GitHub,
+                        Web Scraping,
+                        VS Code
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section id="projects" class="sections">
+
+            <h3>Featured Projects</h3>
+
+            <div class="projects-grid">
+
+
+                <!-- PROJECT 1 -->
+
+                <div class="project-card">
+
+                    <div class="project-content">
+
+                        <h4>
+                            Bank Management System
+                        </h4>
+
+                        <p>
+                            Developed a Python-based banking application
+                            that allows users to create accounts, deposit
+                            and withdraw money, check account balances,
+                            view transaction details, and manage customer
+                            information.
+
+                            Implemented Object-Oriented Programming and
+                            database operations for organized and efficient
+                            data management.
+                        </p>
+
+                        <div class="tags">
+
+                            <span class="tag">Python</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">CRUD</span>
+
+                        </div>
+
+                        <a
+                            href="https://github.com/srikarsrikyasaram0987-creator"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View Source Code →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT 2 -->
+
+                <div class="project-card">
+
+                    <div class="project-content">
+
+                        <h4>
+                            Exploratory Data Analysis (EDA)
+                        </h4>
+
+                        <p>
+                            Performed exploratory data analysis on
+                            real-world datasets using Python.
+
+                            Cleaned and transformed raw data, handled
+                            missing values, identified trends and
+                            patterns, analyzed relationships between
+                            variables, and created visualizations to
+                            generate meaningful insights from data.
+                        </p>
+
+                        <div class="tags">
+
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Matplotlib</span>
+                            <span class="tag">EDA</span>
+
+                        </div>
+
+                        <a
+                            href="https://github.com/"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View Source Code →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT 3 -->
+
+                <div class="project-card">
+
+                    <div class="project-content">
+
+                        <h4>
+                            Student Management System
+                        </h4>
+
+                        <p>
+                            Built a web-based Student Management System
+                            for managing student profiles, roll numbers,
+                            contact information, subjects, and marks.
+
+                            Implemented CRUD operations, database
+                            relationships, student search functionality,
+                            and an admin panel for efficiently managing
+                            student records.
+                        </p>
+
+                        <div class="tags">
+
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+
+                        </div>
+
+                        <a
+                            href="https://github.com"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View Source Code →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT 4 -->
+
+                <div class="project-card">
+
+                    <div class="project-content">
+
+                        <h4>
+                            E-Commerce Web Scraping & Product Analysis
+                        </h4>
+
+                        <p>
+                            Developed a Python web scraping application
+                            to collect publicly available product
+                            information such as product names, prices,
+                            ratings, and reviews from e-commerce websites.
+
+                            Processed and cleaned the extracted data using
+                            Pandas and analyzed product pricing patterns
+                            and trends.
+                        </p>
+
+                        <div class="tags">
+
+                            <span class="tag">Python</span>
+                            <span class="tag">BeautifulSoup</span>
+                            <span class="tag">Requests</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Web Scraping</span>
+
+                        </div>
+
+                        <a
+                            href="https://github.com"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View Source Code →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="sections">
+
+            <h3>Let's Connect</h3>
+
+            <form
+                class="contact-form"
+                action="#"
+                method="POST"
+            >
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Enter your message"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                    style="width: 100%;"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Vasu Kumar Palani.
+            Python Developer Portfolio.
+        </p>
+
+    </footer>
+
+</body>
+</html>
